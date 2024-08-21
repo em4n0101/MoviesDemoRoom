@@ -13,8 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.alexbar.moviesroomdemo.utils.Constants.TAB_FAVORITES
-import com.alexbar.moviesroomdemo.utils.Constants.TAB_TRENDING
+import com.alexbar.moviesdemoroom.utils.Constants.TAB_FAVORITES
+import com.alexbar.moviesdemoroom.utils.Constants.TAB_TRENDING
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
