@@ -13,4 +13,8 @@ object Constants {
     const val MOVIES_TABLE = "movies_table"
     const val MOVIES_DATABASE = "movies_database"
 
+    const val SORT = "Sort"
+    const val SORT_NAME = "Sort By Name"
+    const val SORT_VOTE = "Sort By Vote Average"
+
 }

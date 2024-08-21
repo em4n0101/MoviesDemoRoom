@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -25,11 +26,14 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.alexbar.moviesdemoroom.api.Movie
 import com.alexbar.moviesdemoroom.utils.Constants.API_BASE_URL_IMAGES
+import com.alexbar.moviesdemoroom.viewmodel.MoviesViewModel
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun MovieItem(
     movie: Movie,
+    viewModel: MoviesViewModel,
+    isFavorite: Boolean
 ) {
     Row(modifier = Modifier.padding(8.dp)) {
         Image(
@@ -56,13 +60,19 @@ fun MovieItem(
                 Button(
                     modifier = Modifier.size(60.dp),
                     onClick = {
-
+                        if (viewModel.favoriteMoviesStateFlow.value.contains(movie))
+                            viewModel.deleteMovie(movie)
+                        else
+                            viewModel.insertMovie(movie)
                     }) {
                     Icon(
                         modifier = Modifier
                             .size(55.dp)
                             .fillMaxSize(),
-                        imageVector = Icons.Outlined.FavoriteBorder,
+                        imageVector = if (isFavorite)
+                            Icons.Filled.Favorite
+                        else
+                            Icons.Outlined.FavoriteBorder,
                         contentDescription = "",
                         tint = Color.Blue
                     )

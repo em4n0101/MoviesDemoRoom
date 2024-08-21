@@ -10,6 +10,7 @@ import com.alexbar.moviesdemoroom.viewmodel.MoviesViewModel
 
 @Composable
 fun TrendingMovies(viewModel: MoviesViewModel) {
+    val favoriteMovies = viewModel.favoriteMoviesStateFlow.collectAsState(initial = emptyList())
     val movies = viewModel.moviesStateFlow.collectAsState(initial = emptyList())
 
     LaunchedEffect(Unit) {
@@ -19,7 +20,7 @@ fun TrendingMovies(viewModel: MoviesViewModel) {
     Surface {
         LazyColumn {
             items(movies.value) { movie ->
-                MovieItem(movie)
+                MovieItem(movie, viewModel, favoriteMovies.value.contains(movie))
             }
         }
     }
