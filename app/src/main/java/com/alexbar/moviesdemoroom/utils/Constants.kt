@@ -10,4 +10,7 @@ object Constants {
     const val API_KEY = "e6577451802c52288a2cd6a9885b5c08"
     const val API_LANGUAGE = "en-US"
 
+    const val MOVIES_TABLE = "movies_table"
+    const val MOVIES_DATABASE = "movies_database"
+
 }
